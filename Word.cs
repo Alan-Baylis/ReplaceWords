@@ -14,7 +14,7 @@ namespace ReplaceWords
 
         public override void Replace()
         {
-            if (Program.Words.TryGetValue(Value, out var replacement))
+            if (Program.Words.TryGetValue(Value.ToLowerInvariant(), out var replacement))
                 Value = replacement;
         }
     }

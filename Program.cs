@@ -95,7 +95,7 @@ namespace ReplaceWords
                     {
                         throw new IOException(string.Format("{0}:{1}: Expected pair", wordsfile, j));
                     }
-                    Words.Add(line1[0].Trim(), line1[1].Trim());
+                    Words.Add(line1[0].Trim().ToLowerInvariant(), line1[1].Trim());
                 }
 
                 // Replace
