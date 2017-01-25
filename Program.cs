@@ -29,12 +29,6 @@ namespace ReplaceWords
 
         static void Main(string[] args)
         {
-#if DEBUG
-            if (args.Length == 0)
-            {
-                args = new string[] { @"\ReplaceWords\text.txt", @"\ReplaceWords\words.csv" };
-            }
-#endif
             try
             {
                 // Command line
