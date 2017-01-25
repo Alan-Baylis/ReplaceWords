@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ayane
+namespace ReplaceWords
 {
     static class Util
     {

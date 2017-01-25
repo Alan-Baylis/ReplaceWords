@@ -29,6 +29,12 @@ namespace ReplaceWords
 
         static void Main(string[] args)
         {
+#if DEBUG
+            if (args.Length == 0)
+            {
+                args = new string[] { @"\ReplaceWords\text.txt", @"\ReplaceWords\words.csv" };
+            }
+#endif
             try
             {
                 // Command line
@@ -95,7 +101,7 @@ namespace ReplaceWords
                     {
                         throw new IOException(string.Format("{0}:{1}: Expected pair", wordsfile, j));
                     }
-                    Words.Add(line1[0], line1[1]);
+                    Words.Add(line1[0].Trim(), line1[1].Trim());
                 }
 
                 // Replace

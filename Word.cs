@@ -10,8 +10,12 @@ namespace ReplaceWords
     {
         public Word(string value) : base(value)
         {
-            if (Program.Words.TryGetValue(value, out var replacement))
-                value = replacement;
+        }
+
+        public override void Replace()
+        {
+            if (Program.Words.TryGetValue(Value, out var replacement))
+                Value = replacement;
         }
     }
 }
