@@ -11,6 +11,8 @@ namespace ReplaceWords
 {
     static class Program
     {
+        public static Dictionary<string, string> Words = new Dictionary<string, string>();
+
         static void Help()
         {
             Console.WriteLine("Usage: ReplaceWords <text file> [words file]");
@@ -76,12 +78,31 @@ namespace ReplaceWords
                 if (filenames.Count == 2)
                     wordsfile = filenames[1];
 
-                // Read
+                // Read text
                 List<Token> tokens;
                 using (var reader = new StreamReader(textfile))
                     tokens = Token.Read(reader);
 
-                // Write
+                // Read words
+                int j = 0;
+                foreach (var line in File.ReadAllLines(wordsfile))
+                {
+                    j++;
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+                    var line1 = line.Split(',');
+                    if (line1.Length != 2)
+                    {
+                        throw new IOException(string.Format("{0}:{1}: Expected pair", wordsfile, j));
+                    }
+                    Words.Add(line1[0], line1[1]);
+                }
+
+                // Replace
+                foreach (var token in tokens)
+                    token.Replace();
+
+                // Write text
                 try
                 {
                     File.Delete(textfile + ".bak");

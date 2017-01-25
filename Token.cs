@@ -9,7 +9,7 @@ namespace ReplaceWords
 {
     abstract class Token
     {
-        public readonly string Value;
+        public string Value;
 
         public Token(string value)
         {
@@ -20,6 +20,8 @@ namespace ReplaceWords
         {
             return char.IsLetterOrDigit(c) || c == '_';
         }
+
+        public virtual void Replace() { }
 
         public static List<Token> Read(TextReader reader)
         {
